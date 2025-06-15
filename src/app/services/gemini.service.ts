@@ -10,11 +10,10 @@ export class GeminiService {
 
   constructor(private http: HttpClient) {}
   
-  sendMessage(prompt: string) {
-    const body = {
-      question: prompt
-    };
-  
-    return this.http.post<any>(this.webhookUrl, body);
+  sendMessage(userQuestion: string) {
+
+	const context = environment.KIEN_INFO_CONTEXT;
+	const prompt = `${context}\n\nCâu hỏi của người dùng là:\n${userQuestion}`;
+    return this.http.post<any>(this.webhookUrl, prompt);
   }
 }
