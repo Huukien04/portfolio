@@ -54,16 +54,14 @@ export class ChatbotComponent {
 
 	sendMessage() {
 	  const userMessage = this.currentMessage.trim();
-	  if (!userMessage || this.isLoading ) return;
+	  if (!userMessage || this.isLoading) return;
   
 	  this.messages.push({ text: userMessage, isUser: true });
 	  this.isLoading = true;
-//   console.log(userMessage);
+
 	  this.geminiService.sendMessage(userMessage).subscribe({
 		next: res => {
-			console.log(res)
 			const reply = res.answer;
-		//   const reply = res.answer || 'I\'m not sure how to respond.';
 		  this.messages.push({ text: reply, isUser: false });
 		  this.isLoading = false;
 		},

@@ -1,28 +1,11 @@
-<!-- <div class="chatbot-container">
-	<div class="messages-display">
-	  <div *ngFor="let message of messages" class="message" [ngClass]="{'user-message': message.isUser, 'bot-message': !message.isUser}">
-		{{ message.text }}
-	  </div>
-	  <div *ngIf="isLoading" class="message bot-message">Typing...</div>
-	</div>
-	<div class="input-area">
-	  <input type="text" [(ngModel)]="currentMessage" (keyup.enter)="sendMessage()" placeholder="Type a message...">
-	  <button (click)="sendMessage()">Send</button>
-	</div>
-  </div> -->
+
   <div class="chatbot-container">
-	<!-- Header -->
 	<div class="chatbot-header">
-	  <!-- <div class="bot-avatar">
-		<i class="icon-bot"></i>
-	  </div> -->
 	  <div class="bot-info">
 		<h2>AI</h2>
 		<p>Gemini</p>
 	  </div>
 	</div>
-  
-	<!-- Messages -->
 	<div class="messages-display">
 	  <div
 		*ngFor="let message of messages"
@@ -35,16 +18,13 @@
 		  </span>
 		  
 		  {{ message.text }}
-		  <!-- <span class="icon" *ngIf="message.isUser">🙋</span> -->
 		  <i class="fa-solid fa-brain-circuit"></i>
 		</div>
 	  </div>
-  
-	  <!-- Typing indicator -->
+
 	  <div *ngIf="isLoading" class="message bot-message">
 		<div class="message-bubble typing">
 			<i class="fa-solid fa-comment-nodes" style="color: #42eee8;"></i>
-			<!-- <span class="spinner"></span> -->
 			<div class="wrapper">
 				<div class="circle"></div>
 				<div class="circle"></div>
@@ -57,7 +37,6 @@
 	  </div>
 	</div>
   
-	<!-- Input -->
 	<div class="input-area">
 		<div class="chat-container">
 			<div class="chat-input-wrapper">

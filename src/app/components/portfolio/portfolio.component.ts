@@ -11,10 +11,9 @@ export class PortfolioComponent implements OnInit, OnDestroy {
   title = 'AI Portfolio';
   isChatOpen = false;
   isResizing = false;
-startX = 0;
-startWidth = 0;
+  startX = 0;
+  startWidth = 0;
 
-  // Personal info - thay đổi thông tin của bạn ở đây
   personalInfo = {
     name: 'Nguyễn Hữu Kiên',
     title: 'Fronend Developer',
@@ -30,18 +29,21 @@ startWidth = 0;
     }
   };
 
+  private moveListener: (() => void) | null = null;
+  private upListener: (() => void) | null = null;
+
+  constructor(private renderer: Renderer2) {}
+
   ngOnInit() {
     this.initAnimations();
   }
 
   ngOnDestroy() {
-    // Cleanup if needed
-	if (this.moveListener) this.moveListener();
+    if (this.moveListener) this.moveListener();
     if (this.upListener) this.upListener();
   }
 
   initAnimations() {
-    // Initialize any additional animations here
   }
 
   openLink(url: string) {
@@ -55,17 +57,11 @@ startWidth = 0;
 	link.click();
   }
 
-  private moveListener: (() => void) | null = null;
-  private upListener: (() => void) | null = null;
-
-  constructor(private renderer: Renderer2) {}
-
   startResize(event: MouseEvent) {
     this.isResizing = true;
     this.startX = event.clientX;
     this.startWidth = this.chatPopup.nativeElement.offsetWidth;
 
-    // Add listeners
     this.moveListener = this.renderer.listen('window', 'mousemove', (e) =>
       this.onMouseMove(e)
     );
@@ -77,7 +73,7 @@ startWidth = 0;
   onMouseMove(event: MouseEvent) {
     if (!this.isResizing) return;
     const dx = this.startX - event.clientX;
-    const newWidth = Math.min(Math.max(this.startWidth + dx, 250), 600); // Clamp width
+    const newWidth = Math.min(Math.max(this.startWidth + dx, 250), 600);
     this.chatPopup.nativeElement.style.width = `${newWidth}px`;
   }
 
