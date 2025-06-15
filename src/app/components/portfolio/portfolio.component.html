@@ -1,0 +1,87 @@
+<div class="portfolio-container">
+	<!-- Animated background elements -->
+	<div class="avatar-container">
+		<div class="avatar">
+		  <span class="avatar-text">AI</span>
+		</div>
+	  </div>
+	<div class="background-elements">
+	  <div class="bg-element bg-element-1"></div>
+	  <div class="bg-element bg-element-2"></div>
+	  <div class="bg-element bg-element-3"></div>
+	</div>
+  
+	<!-- Main content -->
+	<div class="main-content">
+	  <!-- Header section -->
+	  <div class="header-section">
+
+  
+		<h1 class="main-title">{{ personalInfo.name }}</h1>
+		<p class="subtitle">{{ personalInfo.title }}</p>
+		<p class="description">{{ personalInfo.description }}</p>
+	  </div>
+  
+	  <!-- Social buttons -->
+	  <div class="social-buttons">
+		<button class="btn btn-cv" (click)="downloadCV()">
+		  <i class="icon-file"></i>
+		  Download CV
+		</button>
+  
+		<button class="btn btn-github" (click)="openLink(personalInfo.links.github)">
+		  <i class="icon-github"></i>
+		  GitHub
+		</button>
+  
+		<button class="btn btn-linkedin" (click)="openLink(personalInfo.links.linkedin)">
+		  <i class="icon-linkedin"></i>
+		  LinkedIn
+		</button>
+  
+		<button class="btn btn-chat" (click)="isChatOpen = true">
+		  <i class="icon-chat"></i>
+		  AI Chat
+		</button>
+	  </div>
+  
+	  <!-- Contact info -->
+	  <div class="contact-info">
+		<div class="contact-item">
+		  <i class="icon-mail"></i>
+		  <span>{{ personalInfo.email }}</span>
+		</div>
+		<div class="contact-item">
+		  <i class="icon-phone"></i>
+		  <span>{{ personalInfo.phone }}</span>
+		</div>
+		<div class="contact-item">
+		  <i class="icon-location"></i>
+		  <span>{{ personalInfo.location }}</span>
+		</div>
+	  </div>
+	</div>
+  
+	<!-- 3D Robot placeholder -->
+	<div class="robot-container">
+</div>
+	 <!-- AI Robot -->
+<ai-robot
+(click)="isChatOpen =!isChatOpen "
+></ai-robot>
+
+
+<div
+  class="chat-overlay"
+  *ngIf="isChatOpen"
+  (click)="onOverlayClick()"
+>
+  <div
+    class="chat-popup"
+	#chatPopup
+    (click)="$event.stopPropagation()"
+  >
+  <div class="resize-handle" (mousedown)="startResize($event)"></div>
+    <app-chatbot></app-chatbot>
+  </div>
+</div>

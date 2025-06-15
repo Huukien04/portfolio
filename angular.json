@@ -36,10 +36,13 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+			   "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "@angular/material/prebuilt-themes/azure-blue.css",
+              "src/styles.scss",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
             ],
             "scripts": [],
             "server": "src/main.server.ts",
@@ -100,9 +103,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+			   "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -110,5 +115,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "0cec178c-fe58-4063-bb37-2d611cd6f338"
   }
 }

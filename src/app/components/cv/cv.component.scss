@@ -1,0 +1,155 @@
+.cv-container {
+	background: linear-gradient(to bottom right, #1f2937, #111827);
+	color: white;
+	padding: 2rem;
+	font-family: 'Segoe UI', sans-serif;
+		height: 100vh;
+		overflow-y: auto;
+	  
+	.cv-section {
+	  background: rgba(31, 41, 55, 0.5);
+	  backdrop-filter: blur(4px);
+	  border: 1px solid #374151;
+	  border-radius: 1rem;
+	  padding: 1.5rem;
+	  margin-bottom: 2rem;
+	  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  
+	  h2 {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: #fff;
+		font-size: 1.25rem;
+		margin-bottom: 1rem;
+	  }
+	}
+  
+	.header {
+	  display: flex;
+	  align-items: center;
+	  gap: 1.5rem;
+  
+	  .avatar {
+		background: linear-gradient(to right, #8b5cf6, #3b82f6);
+		width: 6rem;
+		height: 6rem;
+		border-radius: 9999px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  
+		.icon-user {
+		  font-size: 2rem;
+		  color: white;
+		}
+	  }
+  
+	  .header-text {
+		.title {
+		  color: #c4b5fd;
+		  font-size: 1.125rem;
+		  margin: 0.5rem 0;
+		}
+  
+		.description {
+		  color: #d1d5db;
+		  line-height: 1.6;
+		}
+	  }
+	}
+  
+	.contact-grid {
+	  display: grid;
+	  grid-template-columns: 1fr 1fr;
+	  gap: 1rem;
+  
+	  div {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: #d1d5db;
+		transition: color 0.2s;
+  
+		&:hover {
+		  color: white;
+		}
+	  }
+	}
+  
+	.contact-links {
+	  display: flex;
+	  gap: 1rem;
+	  margin-top: 1rem;
+  
+	  a {
+		background: #374151;
+		padding: 0.5rem;
+		border-radius: 0.5rem;
+		transition: background 0.3s;
+  
+		&:hover {
+		  background: #4b5563;
+		}
+  
+		i {
+		  color: #d1d5db;
+		}
+	  }
+	}
+  
+	.experience-list, .education-list {
+	  display: flex;
+	  flex-direction: column;
+	  gap: 1rem;
+  
+	  .experience-item, .education-item {
+		border-left: 2px solid #8b5cf6;
+		padding-left: 1rem;
+		padding: 0.75rem;
+		border-radius: 0 0.5rem 0.5rem 0;
+		background: rgba(55, 65, 81, 0.3);
+  
+		.company, .institution {
+		  color: #c4b5fd;
+		  font-size: 0.875rem;
+		}
+  
+		.desc {
+		  color: #d1d5db;
+		  margin-top: 0.5rem;
+		  font-size: 0.875rem;
+		}
+	  }
+	}
+  
+	.skills-list {
+	  display: flex;
+	  flex-direction: column;
+	  gap: 1rem;
+  
+	  .skill {
+		span {
+		  display: inline-block;
+		  width: 100%;
+		  color: #d1d5db;
+		  font-size: 0.875rem;
+		  font-weight: 500;
+		}
+  
+		.bar {
+		  background: #374151;
+		  height: 0.5rem;
+		  border-radius: 9999px;
+		  overflow: hidden;
+  
+		  div {
+			height: 100%;
+			background: linear-gradient(to right, #8b5cf6, #3b82f6);
+			transition: width 1s;
+		  }
+		}
+	  }
+	}
+  }

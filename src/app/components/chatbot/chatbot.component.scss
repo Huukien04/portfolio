@@ -1,0 +1,505 @@
+.chatbot-container {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	background: linear-gradient(to bottom right, #111827, #1f2937);
+	color: white;
+  
+	.chatbot-header {
+	  display: flex;
+	  align-items: center;
+	  padding: 1rem;
+	  border-bottom: 1px solid #374151;
+	  background-color: rgba(31, 41, 55, 0.5);
+	  backdrop-filter: blur(6px);
+  
+	  .bot-avatar {
+		width: 40px;
+		height: 40px;
+		background: linear-gradient(to right, #8b5cf6, #3b82f6);
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	  }
+  
+	  .bot-info {
+		margin-left: 1rem;
+		h2 {
+		  margin: 0;
+		  font-size: 1.1rem;
+		}
+		p {
+		  margin: 0;
+		  color: #9ca3af;
+		  font-size: 0.85rem;
+		}
+	  }
+	}
+  
+	.messages-display {
+	  flex: 1;
+	  overflow-y: scroll; /* hoặc auto */
+	  scrollbar-width: none;        /* Firefox */
+	  -ms-overflow-style: none;    
+	  display: flex;
+	  flex-direction: column;
+	  gap: 1rem;
+	  padding-bottom: 96px;
+	  padding-left: 16px;
+	  padding-right: 16px;
+	  padding-top: 8px;
+  
+	  .message {
+		display: flex;
+  
+		&.user-message {
+		  justify-content: flex-end;
+		}
+  
+		&.bot-message {
+		  justify-content: flex-start;
+		}
+  
+		.message-bubble {
+		  max-width: 70%;
+		  padding: 0.75rem 1rem;
+		  border-radius: 1rem;
+		  font-size: 0.95rem;
+		  position: relative;
+		  display: flex;
+		  align-items: center;
+		  gap: 0.5rem;
+  
+		  &.typing {
+			color: #9ca3af;
+		  }
+  
+		  .icon {
+			font-size: 0.85rem;
+		  }
+		}
+  
+		&.user-message .message-bubble {
+		  background: linear-gradient(to right, #8b5cf6, #3b82f6);
+		  color: white;
+		}
+  
+		&.bot-message .message-bubble {
+		  background: rgba(55, 65, 81, 0.5);
+		  border: 1px solid #4b5563;
+		  color: #e5e7eb;
+		}
+	  }
+	}
+
+	.messages-display::-webkit-scrollbar {
+		display: none;                /* Chrome, Safari, Opera */
+	}
+  
+	.input-area {
+	  display: flex;
+	  border-top: 1px solid #374151;
+	  backdrop-filter: blur(6px);
+  
+	  input {
+		flex: 1;
+		background-color: rgb(25 34 48 / 80%);
+		border: 1px solid #4b5563;
+		border-radius: 1rem;
+		padding: 0.75rem 1rem;
+		color: white;
+		outline: none;
+  
+		&::placeholder {
+		  color: #9ca3af;
+		}
+  
+		&:disabled {
+		  background-color: #4b5563;
+		}
+	  }
+  
+	//   .send-button  {
+	// 	background: linear-gradient(to right, #8b5cf6, #3b82f6);
+	// 	color: white;
+	// 	border: none;
+	// 	border-radius: 1rem;
+	// 	padding: 0.75rem 1.2rem;
+	// 	margin-left: 0.75rem;
+	// 	cursor: pointer;
+	// 	transition: transform 0.2s ease;
+  
+	// 	&:hover:enabled {
+	// 	  transform: scale(1.05);
+	// 	}
+  
+	// 	&:disabled {
+	// 	  background: #6b7280;
+	// 	  cursor: not-allowed;
+	// 	}
+  
+	// 	.send-icon {
+	// 	  font-size: 1rem;
+	// 	}
+	//   }
+	}
+  
+	.spinner {
+	  width: 1rem;
+	  height: 1rem;
+	  border: 2px solid #9ca3af;
+	  border-top: 2px solid transparent;
+	  border-radius: 50%;
+	  animation: spin 0.8s linear infinite;
+	}
+  
+	@keyframes spin {
+	  to {
+		transform: rotate(360deg);
+	  }
+	}
+  }
+  
+
+/* From Uiverse.io by MuhammadHasann */ 
+.button {
+	--black-700: hsla(0 0% 12% / 1);
+	--border_radius: 9999px;
+	--transtion: 0.3s ease-in-out;
+	--offset: 2px;
+  
+	cursor: pointer;
+	position: relative;
+  
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+  
+	transform-origin: center;
+  
+	padding: 1rem 2rem;
+	background-color: transparent;
+  
+	border: none;
+	border-radius: var(--border_radius);
+	transform: scale(calc(1 + (var(--active, 0) * 0.1)));
+  
+	transition: transform var(--transtion);
+  }
+  
+  .button::before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+  
+	width: 100%;
+	height: 100%;
+	background-color: var(--black-700);
+  
+	border-radius: var(--border_radius);
+	box-shadow: inset 0 0.5px hsl(0, 0%, 100%), inset 0 -1px 2px 0 hsl(0, 0%, 0%),
+	  0px 4px 10px -4px hsla(0 0% 0% / calc(1 - var(--active, 0))),
+	  0 0 0 calc(var(--active, 0) * 0.375rem) hsl(260 97% 50% / 0.75);
+  
+	transition: all var(--transtion);
+	z-index: 0;
+  }
+  
+  .button::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+  
+	width: 100%;
+	height: 100%;
+	background-color: hsla(260 97% 61% / 0.75);
+	background-image: radial-gradient(
+		at 51% 89%,
+		hsla(266, 45%, 74%, 1) 0px,
+		transparent 50%
+	  ),
+	  radial-gradient(at 100% 100%, hsla(266, 36%, 60%, 1) 0px, transparent 50%),
+	  radial-gradient(at 22% 91%, hsla(266, 36%, 60%, 1) 0px, transparent 50%);
+	background-position: top;
+  
+	opacity: var(--active, 0);
+	border-radius: var(--border_radius);
+	transition: opacity var(--transtion);
+	z-index: 2;
+  }
+  
+  .button:is(:hover, :focus-visible) {
+	--active: 1;
+  }
+  .button:active {
+	transform: scale(1);
+  }
+  
+  .button .dots_border {
+	--size_border: calc(100% + 2px);
+  
+	overflow: hidden;
+  
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+  
+	width: var(--size_border);
+	height: var(--size_border);
+	background-color: transparent;
+  
+	border-radius: var(--border_radius);
+	z-index: -10;
+  }
+  
+  .button .dots_border::before {
+	content: "";
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	transform-origin: left;
+	transform: rotate(0deg);
+  
+	width: 100%;
+	height: 2rem;
+	background-color: white;
+  
+	mask: linear-gradient(transparent 0%, white 120%);
+	animation: rotate 2s linear infinite;
+  }
+  
+  @keyframes rotate {
+	to {
+	  transform: rotate(360deg);
+	}
+  }
+  
+  .button .sparkle {
+	position: relative;
+	z-index: 10;
+	width: 30px;
+	height: 30px;
+  }
+  
+  .button .sparkle .path {
+	fill: currentColor;
+	stroke: currentColor;
+  
+	transform-origin: center;
+  
+	color: hsl(0, 0%, 100%);
+  }
+  
+  .button:is(:hover, :focus) .sparkle .path {
+	animation: path 1.5s linear 0.5s infinite;
+  }
+  
+  .button .sparkle .path:nth-child(1) {
+	--scale_path_1: 1.2;
+  }
+  .button .sparkle .path:nth-child(2) {
+	--scale_path_2: 1.2;
+  }
+  .button .sparkle .path:nth-child(3) {
+	--scale_path_3: 1.2;
+  }
+  
+  @keyframes path {
+	0%,
+	34%,
+	71%,
+	100% {
+	  transform: scale(1);
+	}
+	17% {
+	  transform: scale(var(--scale_path_1, 1));
+	}
+	49% {
+	  transform: scale(var(--scale_path_2, 1));
+	}
+	83% {
+	  transform: scale(var(--scale_path_3, 1));
+	}
+  }
+  
+  .button .text_button {
+	position: relative;
+	z-index: 10;
+  
+	background-image: linear-gradient(
+	  90deg,
+	  hsla(0 0% 100% / 1) 0%,
+	  hsla(0 0% 100% / var(--active, 0)) 120%
+	);
+	background-clip: text;
+  
+	font-size: 1rem;
+	color: transparent;
+  }
+  /* From Uiverse.io by mobinkakei */ 
+.wrapper {
+	width: 100px;
+	height: 30px;
+	position: relative;
+	z-index: 1;
+  }
+  
+  .circle {
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	border-radius: 50%;
+	background-color: #fff;
+	left: 15%;
+	transform-origin: 50%;
+	animation: circle7124 .5s alternate infinite ease;
+  }
+  
+  @keyframes circle7124 {
+	0% {
+	  top: 20px;
+	  bottom: 20px;
+	  height: 5px;
+	  border-radius: 50px 50px 25px 25px;
+	  transform: scaleX(1.7);
+	}
+  
+	70% {
+	  height: 10px;
+	  border-radius: 50%;
+	  transform: scaleX(1);
+	}
+  
+	100% {
+	  top: 0%;
+	}
+  }
+  
+  .circle:nth-child(2) {
+	left: 45%;
+	animation-delay: .2s;
+  }
+  
+  .circle:nth-child(3) {
+	left: auto;
+	right: 15%;
+	animation-delay: .3s;
+  }
+  
+  .shadow {
+	width: 10px;
+	height: 4px;
+	border-radius: 50%;
+	background-color: rgba(0,0,0,0.9);
+	position: absolute;
+	top: 25px;
+	transform-origin: 50%;
+	z-index: -1;
+	left: 15%;
+	filter: blur(1px);
+	animation: shadow046 .5s alternate infinite ease;
+  }
+  
+  @keyframes shadow046 {
+	0% {
+	  transform: scaleX(1.5);
+	}
+  
+	70% {
+	  transform: scaleX(1);
+	  opacity: .7;
+	}
+  
+	100% {
+	  transform: scaleX(.2);
+	  opacity: .4;
+	}
+  }
+  
+  .shadow:nth-child(4) {
+	left: 45%;
+	animation-delay: .2s
+  }
+  
+  .shadow:nth-child(5) {
+	left: auto;
+	right: 15%;
+	animation-delay: .3s;
+  }
+  
+  .chat-container {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	padding: 16px;
+	display: flex;
+	justify-content: center;
+  }
+  
+  .chat-input-wrapper {
+	display: flex;
+	align-items: center;
+	background-color: rgb(25 34 48 / 80%);
+    border: 2px solid #125863;
+	padding: 12px;
+	border-radius: 20px;
+	width: 100%;
+	max-width: 800px;
+	gap: 8px;
+	position: relative;
+	box-shadow: 0 4px 12px rgb(72 159 173 / 23%)
+  }
+  
+  .chat-textarea {
+	flex-grow: 1;
+	background: transparent;
+	border: none;
+	color: #fff;
+	resize: none;
+	overflow: hidden;
+	font-size: 16px;
+	line-height: 1.5;
+	outline: none;
+  }
+  .chat-textarea::placeholder {
+	color: #ffffff9a; /* Màu placeholder */
+	opacity: 1; /* Đảm bảo hiển thị rõ */
+  }
+  
+  .chat-icons-left,
+  .chat-icons-right {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+  }
+  
+  .icon-btn {
+	background: none;
+	border: none;
+	color: #ccc;
+	font-size: 16px;
+	cursor: pointer;
+  }
+  
+  .icon-btn:hover {
+	color: #fff;
+  }
+  
+  .send-btn {
+	background: white;
+	border: none;
+	color: black;
+	border-radius: 50%;
+	width: 32px;
+	height: 32px;
+	font-size: 16px;
+	cursor: pointer;
+  }
+  

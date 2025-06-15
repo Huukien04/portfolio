@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+  --dark-blue: #1a2b3c;
+  --black: #000000;
+  --light-blue: #3f51b5;
+  --white: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--black);
+  color: var(--dark-blue);
+  height: 100%;
+  margin: 0;
+  overflow: auto;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
