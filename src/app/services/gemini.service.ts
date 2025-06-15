@@ -14,6 +14,18 @@ export class GeminiService {
 
 	const context = environment.KIEN_INFO_CONTEXT;
 	const prompt = `${context}\n\nCâu hỏi của người dùng là:\n${userQuestion}`;
-    return this.http.post<any>(this.webhookUrl, prompt);
+	const body = {
+        contents: [
+			{
+			  parts: [
+				{
+				  text: prompt
+				}
+			]
+		}
+	]
+}
+      
+    return this.http.post<any>(this.webhookUrl, body);
   }
 }

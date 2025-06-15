@@ -61,7 +61,8 @@ export class ChatbotComponent {
 
 	  this.geminiService.sendMessage(userMessage).subscribe({
 		next: res => {
-			const reply = res.answer;
+			// const reply = res.answer;
+			const reply = res.candidates[0]?.content?.parts?.[0]?.text
 		  this.messages.push({ text: reply, isUser: false });
 		  this.isLoading = false;
 		},
