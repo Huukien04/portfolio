@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CvComponent } from './components/cv/cv.component';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { PortfolioModule } from './components/portfolio/portfolio.module';
 
@@ -22,7 +21,6 @@ import { PortfolioModule } from './components/portfolio/portfolio.module';
     BrowserModule,
     AppRoutingModule,
 	MatFormFieldModule,
-	BrowserAnimationsModule,
     FormsModule,
 	PortfolioModule
   ],
