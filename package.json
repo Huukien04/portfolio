@@ -6,8 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "serve:ssr:my-cv-app": "node dist/my-cv-app/server/server.mjs"
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
