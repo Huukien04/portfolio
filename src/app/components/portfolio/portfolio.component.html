@@ -1,9 +1,9 @@
 <div class="portfolio-container">
-	<div class="avatar-container">
+	<!-- <div class="avatar-container">
 		<div class="avatar">
 		  <span class="avatar-text">AI</span>
 		</div>
-	  </div>
+	  </div> -->
 	<div class="background-elements">
 	  <div class="bg-element bg-element-1"></div>
 	  <div class="bg-element bg-element-2"></div>
@@ -15,7 +15,7 @@
   
 		<h1 class="main-title">{{ personalInfo.name }}</h1>
 		<p class="subtitle">{{ personalInfo.title }}</p>
-		<p class="description">{{ personalInfo.description }}</p>
+		<!-- <p class="description">{{ personalInfo.description }}</p> -->
 	  </div>
   
 	  <div class="social-buttons">
@@ -57,10 +57,9 @@
   
 	<div class="robot-container">
 </div>
-<ai-robot
-(click)="isChatOpen =!isChatOpen "
-></ai-robot>
-
+<div class="robot-container">
+	<ai-robot (click)="isChatOpen = !isChatOpen"></ai-robot>
+  </div>
 
 <div
   class="chat-overlay"
